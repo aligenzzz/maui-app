@@ -6,7 +6,7 @@ namespace _153501_Bybko.Domain.Abstractions
     {
         IRepository<Artist> ArtistRepository { get; }
         IRepository<Song> SongRepository { get; }
-        public Task RemoveDatbaseAsync();
+        public Task RemoveDatabaseAsync();
         public Task CreateDatabaseAsync();
         public Task SaveAllAsync();
     }
