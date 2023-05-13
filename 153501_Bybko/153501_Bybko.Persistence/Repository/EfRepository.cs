@@ -18,20 +18,33 @@ namespace _153501_Bybko.Persistence.Repository
             _entities = context.Set<T>();
         }
 
-        public Task AddAsync(T entity, CancellationToken cancellationToken = default)
+        public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            await _entities.AddAsync(entity, cancellationToken);
         }
 
         public Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            if (_entities.Contains(entity))
+                _entities.Remove(entity);
+
+            return Task.CompletedTask;
         }
 
-        public Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> filter, 
+        public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> filter, 
                                            CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            IQueryable<T>? query = _entities.AsQueryable();
+            try
+            {
+                var result = await query.FirstAsync(filter, cancellationToken);
+
+                return result;
+            }
+            catch (InvalidOperationException)
+            {
+                return default;
+            }
         }
 
         public Task<T> GetByIdAsync(int id, CancellationToken cancellationToken = default, 
@@ -40,9 +53,11 @@ namespace _153501_Bybko.Persistence.Repository
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default)
+        public async Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            IQueryable<T>? query = _entities.AsQueryable();
+
+            return await query.ToListAsync();
         }
 
         public async Task<IReadOnlyList<T>> ListAsync(Expression<Func<T, bool>> filter, 

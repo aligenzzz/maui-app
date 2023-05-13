@@ -6,17 +6,15 @@
         {
             Id = -1;
             Name = "";
-            Image = "";
             Genre = "";
             Country = "";
 
             Songs = new();
         }
-        public Artist(int id, string name, string image, string genre, string country) 
+        public Artist(int id, string name, string genre, string country) 
         {
             Id = id;
             Name = name;
-            Image = image;
             Genre = genre;
             Country = country;
 

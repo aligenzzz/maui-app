@@ -78,7 +78,7 @@ namespace _153501_Bybko.Persistence.Repository
                     {
                         Id = k,
                         Name = $"Song {k++}",
-                        Artist = k,
+                        ArtistId = k,
                         Top = k
                     });
         }

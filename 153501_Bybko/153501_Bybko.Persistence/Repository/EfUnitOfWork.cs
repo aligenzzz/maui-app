@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _153501_Bybko.Persistence.Repository
 {
-    internal class EfUnitOfWork : IUnitOfWork
+    public class EfUnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _context;
         private readonly Lazy<IRepository<Artist>> _artistRepository;

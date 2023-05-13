@@ -32,7 +32,7 @@ namespace _153501_Bybko.Application.Services
 
         public Task<IReadOnlyList<Song>> GetArtistSongs(int id)
         {
-            var songs = _songRepository.ListAsync(song => song.Artist == id);
+            var songs = _songRepository.ListAsync(song => song.ArtistId == id);
             return songs;
         }
 
