@@ -53,9 +53,9 @@ namespace _153501_Bybko.Persistence.Repository
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<Artist>> ListAllAsync(CancellationToken cancellationToken = default)
+        public async Task<IReadOnlyList<Artist>> ListAllAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return _list;
         }
 
         public Task UpdateAsync(Artist entity, CancellationToken cancellationToken = default)

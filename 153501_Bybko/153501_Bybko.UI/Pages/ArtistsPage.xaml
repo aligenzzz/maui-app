@@ -11,6 +11,8 @@
                                         Command="{Binding UpdateGroupListCommand}" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
-        <Picker ItemsSource="{Binding Artists}"/>
+        <Picker ItemsSource="{Binding Artists}"
+                ItemDisplayBinding="{Binding Name}" 
+                BackgroundColor="White"/>
     </VerticalStackLayout>
 </ContentPage>

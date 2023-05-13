@@ -2,6 +2,7 @@
 using _153501_Bybko.Application.Services;
 using _153501_Bybko.Domain.Abstractions;
 using _153501_Bybko.Persistence.Repository;
+using _153501_Bybko.UI.Pages;
 using _153501_Bybko.UI.ViewModels;
 using CommunityToolkit.Maui;
 
@@ -33,6 +34,7 @@ public static class MauiProgram
 		services.AddSingleton<ISongService, SongService>();
 
 		// Pages
+		services.AddSingleton<ArtistsPage>();
 
 		// ViewModels
 		services.AddSingleton<ArtistsPageViewModel>();
