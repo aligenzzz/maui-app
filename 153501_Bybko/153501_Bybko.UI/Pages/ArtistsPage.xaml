@@ -1,18 +1,61 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:_153501_Bybko.UI.ValueConverters"
              xmlns:models="clr-namespace:_153501_Bybko.UI.ViewModels"
+             xmlns:model="clr-namespace:_153501_Bybko.Domain.Entities;assembly=153501_Bybko.Domain"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="models:ArtistsPageViewModel"
              x:Class="_153501_Bybko.UI.Pages.ArtistsPage"
-             Title="ArtistsPage">
+             Title="StartPage">
+    
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior EventName="Loaded"
                                         Command="{Binding UpdateGroupListCommand}" />
     </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TopToColorValueConverter x:Key="topConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <VerticalStackLayout>
-        <Picker ItemsSource="{Binding Artists}"
-                ItemDisplayBinding="{Binding Name}" 
-                BackgroundColor="White"/>
+        
+        <Frame CornerRadius="50"
+               HeightRequest="60"
+               Margin="10"
+               Padding="9">
+            <Picker Title="Select an artist"
+                ItemsSource="{Binding Artists}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedArtist}"
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                HorizontalTextAlignment="Center">
+                <Picker.Behaviors>
+                    <toolkit:EventToCommandBehavior EventName="SelectedIndexChanged"
+                                                  Command="{Binding UpdateMembersListCommand}" />
+                </Picker.Behaviors>
+            </Picker>
+        </Frame>
+
+        <Frame CornerRadius="0"
+               HeightRequest="80">
+            <Label Text="{Binding SelectedArtist.Name}"
+                   TextColor="Black"/>
+        </Frame>        
+
+        <CollectionView x:Name="collectionView" ItemsSource="{Binding Songs}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Song">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}"
+                               TextColor="{Binding Path=Top, Converter={StaticResource topConverter}}"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
     </VerticalStackLayout>
 </ContentPage>

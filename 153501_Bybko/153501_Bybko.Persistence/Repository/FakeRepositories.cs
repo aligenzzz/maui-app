@@ -78,6 +78,8 @@ namespace _153501_Bybko.Persistence.Repository
                     {
                         Id = k,
                         Name = $"Song {k++}",
+                        Artist = k,
+                        Top = k
                     });
         }
 
@@ -111,9 +113,9 @@ namespace _153501_Bybko.Persistence.Repository
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<Song>> ListAllAsync(CancellationToken cancellationToken = default)
+        public async Task<IReadOnlyList<Song>> ListAllAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return _list;
         }
 
         public Task UpdateAsync(Song entity, CancellationToken cancellationToken = default)

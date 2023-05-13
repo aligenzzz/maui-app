@@ -18,6 +18,7 @@ namespace _153501_Bybko.UI.ViewModels
         }
 
         public ObservableCollection<Artist> Artists { get; set; } = new();
+
         public ObservableCollection<Song> Songs { get; set; } = new();
 
         [ObservableProperty]
