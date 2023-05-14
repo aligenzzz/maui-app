@@ -1,5 +1,6 @@
 ﻿using _153501_Bybko.Application.Abstractions;
 using _153501_Bybko.Domain.Entities;
+using _153501_Bybko.UI.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
@@ -50,6 +51,20 @@ namespace _153501_Bybko.UI.ViewModels
                 foreach (var song in songs)
                     Songs.Add(song);
             });
+        }
+
+        [RelayCommand]
+        async void ShowDetails(Song song) => await GotoDetailsPage(song);
+
+        private async Task GotoDetailsPage(Song song)
+        {
+            IDictionary<string, object> parameters =
+                                  new Dictionary<string, object>()
+            {
+                { "Song", song }
+            };
+
+            await Shell.Current.GoToAsync(nameof(SongDetailsPage), parameters);
         }
     }
 }

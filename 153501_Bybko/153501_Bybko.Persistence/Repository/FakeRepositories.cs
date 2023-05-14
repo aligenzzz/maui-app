@@ -1,11 +1,6 @@
 ﻿using _153501_Bybko.Domain.Abstractions;
 using _153501_Bybko.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _153501_Bybko.Persistence.Repository
 {

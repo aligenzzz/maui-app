@@ -74,6 +74,9 @@
 	  <MauiXaml Update="Pages\ArtistsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\SongDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutException153501_BybkoUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>

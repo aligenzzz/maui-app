@@ -7,7 +7,8 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="models:ArtistsPageViewModel"
              x:Class="_153501_Bybko.UI.Pages.ArtistsPage"
-             Title="StartPage">
+             Title="StartPage"
+             BackgroundColor="Black">
     
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior EventName="Loaded"
@@ -31,7 +32,7 @@
                 ItemDisplayBinding="{Binding Name}"
                 SelectedItem="{Binding SelectedArtist}"
                 BackgroundColor="Transparent"
-                TextColor="Black"
+                TextColor="Gray"
                 HorizontalTextAlignment="Center">
                 <Picker.Behaviors>
                     <toolkit:EventToCommandBehavior EventName="SelectedIndexChanged"
@@ -41,21 +42,51 @@
         </Frame>
 
         <Frame CornerRadius="0"
-               HeightRequest="80">
-            <Label Text="{Binding SelectedArtist.Name}"
-                   TextColor="Black"/>
-        </Frame>        
+               HeightRequest="80"
+               BorderColor="Transparent">
+            <HorizontalStackLayout Spacing="140">
+                <Label Text="{Binding SelectedArtist.Name}"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center"
+                       TextTransform="Uppercase"/>
 
-        <CollectionView x:Name="collectionView" ItemsSource="{Binding Songs}">
+                <VerticalStackLayout>
+                    <Label Text="{Binding SelectedArtist.Genre}"
+                           TextColor="Black"/>
+                    <Label Text="{Binding SelectedArtist.Country}"
+                           TextColor="Black"
+                           HorizontalOptions='End'/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <CollectionView x:Name="collectionView" 
+                        ItemsSource="{Binding Songs}" 
+                        VerticalScrollBarVisibility="Always"
+                        HeightRequest="600">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Song">
-                    <VerticalStackLayout>
-                        <Label Text="{Binding Name}"
-                               TextColor="{Binding Path=Top, Converter={StaticResource topConverter}}"/>
-                    </VerticalStackLayout>
+
+                    <Frame BackgroundColor="Transparent"
+                           CornerRadius="10"
+                           BorderColor="{Binding Path=Top, Converter={StaticResource topConverter}}"
+                           Margin="0,10,0,0">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}"/>
+                        </VerticalStackLayout>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource 
+                                                                AncestorType={x:Type models:ArtistsPageViewModel}},
+                                                                Path=ShowDetailsCommand}"
+                                                      CommandParameter="{Binding}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        
+
+
     </VerticalStackLayout>
 </ContentPage>

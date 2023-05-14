@@ -12,7 +12,7 @@ namespace _153501_Bybko.UI.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if ((int)value <= 10)
-                return Colors.Green;
+                return Colors.Fuchsia;
             else
                 return Colors.WhiteSmoke;
         }
