@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:_153501_Bybko.UI.ValueConverters"
              x:Class="_153501_Bybko.UI.Pages.SongDetailsPage"
-             Title="SongDetailsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding Song.Name}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="SongDetails">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TopToColorValueConverter x:Key="topConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout Spacing="20">
+        <Image Source="{Binding Song.Image}"
+               Margin="10"
+               HeightRequest="300"/>
+        
+        <Frame BackgroundColor="Transparent"
+               HeightRequest="200"
+               BorderColor="WhiteSmoke"
+               Margin="10">
+            <Grid Margin="8" RowSpacing="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Text="Name:"/>
+                <Label Grid.Column="1" 
+                       Text="{Binding Song.Name}" 
+                       FlowDirection="RightToLeft"/>
+
+                <Label Grid.Row="1" 
+                       Text="Album:"/>
+                <Label Grid.Row="1" 
+                       Grid.Column="1" 
+                       Text="{Binding Song.Album}"
+                       FlowDirection="RightToLeft"/>
+
+                <Label Grid.Row="2" 
+                       Text="Place in the chart:"/>
+                <Label Grid.Row="2" 
+                       Grid.Column="1" 
+                       Text="{Binding Song.Top}"
+                       TextColor="{Binding Path=Song.Top, Converter={StaticResource topConverter}}"
+                       FlowDirection="RightToLeft"/>
+            </Grid>            
+            
+        </Frame>
+
     </VerticalStackLayout>
 </ContentPage>
