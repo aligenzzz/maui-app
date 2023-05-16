@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_153501_Bybko.UI.Pages.EditSongPage"
+             Title="EditSong">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="simpleEntry" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="MaxLength" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout Margin="60,0,60,70" Spacing="20" VerticalOptions="Center">
+        <Entry x:Name="entryName"
+               Placeholder="{Binding Song.Name}" 
+               Text="{Binding Name}"
+               Style="{StaticResource simpleEntry}"/>
+        <Entry x:Name="entryAlbum"
+               Placeholder="{Binding Song.Album}" 
+               Text="{Binding Album}"
+               Style="{StaticResource simpleEntry}"/>
+        <Entry x:Name="entryImage"
+               Placeholder="{Binding Song.Image}" 
+               Text="{Binding Image}"
+               Style="{StaticResource simpleEntry}"/>
+        <Entry x:Name="entryTop"
+               Placeholder="{Binding Song.Top}" 
+               Text="{Binding Top}"
+               Style="{StaticResource simpleEntry}"/>
+        <Button Text="Edit"
+                CornerRadius="0"
+                TextColor="Fuchsia"
+                Command="{Binding EditMemberCommand}"/>
+    </VerticalStackLayout>
+    
+</ContentPage>

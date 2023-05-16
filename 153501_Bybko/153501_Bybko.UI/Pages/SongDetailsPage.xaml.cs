@@ -4,10 +4,10 @@ namespace _153501_Bybko.UI.Pages;
 
 public partial class SongDetailsPage : ContentPage
 {
-	public SongDetailsPage()
+	public SongDetailsPage(SongDetailsPageViewModel viewModel)
 	{
 		InitializeComponent();
 
-		BindingContext = new SongDetailsPageViewModel();
-	}
+		BindingContext = viewModel;
+    }
 }

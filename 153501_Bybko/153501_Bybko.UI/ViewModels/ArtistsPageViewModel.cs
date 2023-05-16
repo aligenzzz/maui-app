@@ -44,6 +44,8 @@ namespace _153501_Bybko.UI.ViewModels
 
         public async Task GetSongs()
         {
+            if (SelectedArtist == null) return;
+
             var songs = await _songService.GetArtistSongs(SelectedArtist.Id);
             await MainThread.InvokeOnMainThreadAsync(() =>
             {
@@ -52,6 +54,7 @@ namespace _153501_Bybko.UI.ViewModels
                     Songs.Add(song);
             });
         }
+
 
         [RelayCommand]
         async void ShowDetails(Song song) => await GotoDetailsPage(song);

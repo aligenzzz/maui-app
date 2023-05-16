@@ -41,9 +41,10 @@ namespace _153501_Bybko.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<Song> UpdateAsync(Song item)
+        public async Task UpdateAsync(Song item)
         {
-            throw new NotImplementedException();
+            await _songRepository.UpdateAsync(item);
+            await _unitOfWork.SaveAllAsync();
         }
     }
 }

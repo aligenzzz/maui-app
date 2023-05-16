@@ -7,12 +7,13 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="models:ArtistsPageViewModel"
              x:Class="_153501_Bybko.UI.Pages.ArtistsPage"
-             Title="StartPage"
-             BackgroundColor="Black">
+             Title="StartPage">
     
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior EventName="Loaded"
                                         Command="{Binding UpdateGroupListCommand}" />
+        <toolkit:EventToCommandBehavior EventName="Appearing"
+                                        Command="{Binding UpdateMembersListCommand}" />
     </ContentPage.Behaviors>
 
     <ContentPage.Resources>
@@ -21,8 +22,12 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="button_add.png"/>
+    </ContentPage.ToolbarItems>
+
     <VerticalStackLayout>
-        
+
         <Frame CornerRadius="50"
                HeightRequest="60"
                Margin="10"
@@ -36,7 +41,7 @@
                 HorizontalTextAlignment="Center">
                 <Picker.Behaviors>
                     <toolkit:EventToCommandBehavior EventName="SelectedIndexChanged"
-                                                  Command="{Binding UpdateMembersListCommand}" />
+                                                    Command="{Binding UpdateMembersListCommand}"/>
                 </Picker.Behaviors>
             </Picker>
         </Frame>
@@ -91,7 +96,7 @@
                             <TapGestureRecognizer Command="{Binding Source={RelativeSource 
                                                                 AncestorType={x:Type models:ArtistsPageViewModel}},
                                                                 Path=ShowDetailsCommand}"
-                                                      CommandParameter="{Binding}"/>
+                                                  CommandParameter="{Binding}"/>
                         </Frame.GestureRecognizers>
                     </Frame>
 

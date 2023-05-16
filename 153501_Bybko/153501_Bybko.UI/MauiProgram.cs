@@ -44,10 +44,12 @@ public static class MauiProgram
 		// Pages
 		services.AddSingleton<ArtistsPage>();
         services.AddTransient<SongDetailsPage>();
+        services.AddTransient<EditSongPage>();
 
 		// ViewModels
 		services.AddSingleton<ArtistsPageViewModel>();
         services.AddTransient<SongDetailsPageViewModel>();
+        services.AddTransient<EditSongPageViewModel>();
 	}
 
     private static void AddDbContext(MauiAppBuilder builder)
@@ -87,10 +89,10 @@ public static class MauiProgram
 		// Add artists
 		IReadOnlyList<Artist> artists = new List<Artist>()
 		{
-            new Artist() { Id = 1, Name = "Mitski", Country = "USA/Japan", Genre = "Indie rock" },
-            new Artist() { Id = 2, Name = "Tame Impala", Country = "Australia", Genre = "Psychedelic rock" },
-            new Artist() { Id = 3, Name = "TWICE", Country = "South Korea", Genre = "K-pop" },
-            new Artist() { Id = 4, Name = "Radiohead", Country = "Great Britain", Genre = "Alternative rock" },
+            new Artist() { Name = "Mitski", Country = "USA/Japan", Genre = "Indie rock" },
+            new Artist() { Name = "Tame Impala", Country = "Australia", Genre = "Psychedelic rock" },
+            new Artist() { Name = "TWICE", Country = "South Korea", Genre = "K-pop" },
+            new Artist() { Name = "Radiohead", Country = "Great Britain", Genre = "Alternative rock" },
         };
 
         foreach (var artist in artists) 

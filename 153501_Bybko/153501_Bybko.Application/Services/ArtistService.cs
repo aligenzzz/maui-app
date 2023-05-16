@@ -37,7 +37,7 @@ namespace _153501_Bybko.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<Artist> UpdateAsync(Artist item)
+        public Task UpdateAsync(Artist item)
         {
             throw new NotImplementedException();
         }

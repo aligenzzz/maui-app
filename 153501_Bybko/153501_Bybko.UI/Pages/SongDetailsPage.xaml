@@ -10,12 +10,20 @@
             <converters:TopToColorValueConverter x:Key="topConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="button_edit.png"
+                     Command="{Binding EditMemberCommand}"
+                     CommandParameter="{Binding Song}"/>
+        <ToolbarItem IconImageSource="button_move.png"
+                     Command="{Binding MoveMemberCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <VerticalStackLayout Spacing="20">
         <Image Source="{Binding Song.Image}"
                Margin="10"
                HeightRequest="300"/>
-        
+
         <Frame BackgroundColor="Transparent"
                HeightRequest="200"
                BorderColor="WhiteSmoke"
@@ -50,9 +58,9 @@
                        Text="{Binding Song.Top}"
                        TextColor="{Binding Path=Song.Top, Converter={StaticResource topConverter}}"
                        FlowDirection="RightToLeft"/>
-            </Grid>            
-            
+            </Grid>
+
         </Frame>
 
     </VerticalStackLayout>
-</ContentPage>
+</ContentPage> 

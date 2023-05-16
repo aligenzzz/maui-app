@@ -2,12 +2,12 @@ using _153501_Bybko.UI.ViewModels;
 
 namespace _153501_Bybko.UI.Pages;
 
-public partial class ArtistsPage : ContentPage
+public partial class EditSongPage : ContentPage
 {
-	public ArtistsPage(ArtistsPageViewModel viewModel)
+	public EditSongPage(EditSongPageViewModel viewModel)
 	{
 		InitializeComponent();
-		
+
 		BindingContext = viewModel;
-    }
+	}
 }
