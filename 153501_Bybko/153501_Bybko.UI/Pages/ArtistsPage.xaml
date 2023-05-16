@@ -13,7 +13,7 @@
         <toolkit:EventToCommandBehavior EventName="Loaded"
                                         Command="{Binding UpdateGroupListCommand}" />
         <toolkit:EventToCommandBehavior EventName="Appearing"
-                                        Command="{Binding UpdateMembersListCommand}" />
+                                        Command="{Binding UpdateAllCommand}" />
     </ContentPage.Behaviors>
 
     <ContentPage.Resources>
@@ -23,7 +23,8 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="button_add.png"/>
+        <ToolbarItem IconImageSource="button_add.png"
+                     Command="{Binding AddMemberOrGroupCommand}"/>
     </ContentPage.ToolbarItems>
 
     <VerticalStackLayout>

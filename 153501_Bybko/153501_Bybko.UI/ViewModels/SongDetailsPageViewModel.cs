@@ -18,7 +18,7 @@ namespace _153501_Bybko.UI.ViewModels
         }
 
         [ObservableProperty]
-        static public Song song;
+        public Song song;
 
         [RelayCommand]
         async void EditMember(Song song) => await GotoEditMemberPage(song);

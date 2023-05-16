@@ -45,11 +45,15 @@ public static class MauiProgram
 		services.AddSingleton<ArtistsPage>();
         services.AddTransient<SongDetailsPage>();
         services.AddTransient<EditSongPage>();
+        services.AddTransient<AddSongPage>();
+        services.AddTransient<AddArtistPage>();
 
 		// ViewModels
 		services.AddSingleton<ArtistsPageViewModel>();
         services.AddTransient<SongDetailsPageViewModel>();
         services.AddTransient<EditSongPageViewModel>();
+        services.AddTransient<AddSongPageViewModel>();
+        services.AddTransient<AddArtistPageViewModel>();
 	}
 
     private static void AddDbContext(MauiAppBuilder builder)

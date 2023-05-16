@@ -7,7 +7,7 @@ namespace _153501_Bybko.Application.Abstractions
 
         Task<IReadOnlyList<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<T> AddAsync(T item);
+        Task AddAsync(T item);
         Task UpdateAsync(T item);
         Task<T> DeleteAsync(int id);
     }

@@ -16,9 +16,10 @@ namespace _153501_Bybko.Application.Services
             _artistRepository = _unitOfWork.ArtistRepository;
         }
 
-        public Task<Artist> AddAsync(Artist item)
+        public async Task AddAsync(Artist item)
         {
-            throw new NotImplementedException();
+            await _artistRepository.AddAsync(item);
+            await _unitOfWork.SaveAllAsync();
         }
 
         public Task<Artist> DeleteAsync(int id)

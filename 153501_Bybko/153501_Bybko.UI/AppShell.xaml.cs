@@ -12,5 +12,9 @@ public partial class AppShell : Shell
                               typeof(SongDetailsPage));
         Routing.RegisterRoute(nameof(EditSongPage),
                               typeof(EditSongPage));
+        Routing.RegisterRoute(nameof(AddSongPage),
+                              typeof(AddSongPage));
+        Routing.RegisterRoute(nameof(AddArtistPage),
+                              typeof(AddArtistPage));
     }
 }

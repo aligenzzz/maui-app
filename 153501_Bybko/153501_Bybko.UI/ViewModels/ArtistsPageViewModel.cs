@@ -26,6 +26,16 @@ namespace _153501_Bybko.UI.ViewModels
         Artist selectedArtist;
 
         [RelayCommand]
+        void UpdateAll()
+        {
+            Artist temp = SelectedArtist;
+            UpdateGroupList();
+            SelectedArtist = temp;
+
+            UpdateMembersList();
+        }
+
+        [RelayCommand]
         async void UpdateGroupList() => await GetArtists();
 
         [RelayCommand]
@@ -68,6 +78,29 @@ namespace _153501_Bybko.UI.ViewModels
             };
 
             await Shell.Current.GoToAsync(nameof(SongDetailsPage), parameters);
+        }
+
+        [RelayCommand]
+        async void AddMemberOrGroup() => await AddSongOrArtist();
+
+        private async Task AddSongOrArtist()
+        {
+            string action = await Shell.Current.CurrentPage.DisplayActionSheet("Add new...", "Cancel", null, "Artist", "Song");
+
+            if (action == null || SelectedArtist == null) return;
+
+            if (action == "Artist")
+                await Shell.Current.GoToAsync(nameof(AddArtistPage));
+            if (action == "Song")
+            {
+                IDictionary<string, object> parameters =
+                                 new Dictionary<string, object>()
+                {
+                    { "Artist", SelectedArtist }
+                };
+
+                await Shell.Current.GoToAsync(nameof(AddSongPage), parameters);
+            }
         }
     }
 }

@@ -15,9 +15,10 @@ namespace _153501_Bybko.Application.Services
             _songRepository = _unitOfWork.SongRepository;
         }
 
-        public Task<Song> AddAsync(Song item)
+        public async Task AddAsync(Song item)
         {
-            throw new NotImplementedException();
+            await _songRepository.AddAsync(item);
+            await _unitOfWork.SaveAllAsync();
         }
 
         public Task<Song> DeleteAsync(int id)

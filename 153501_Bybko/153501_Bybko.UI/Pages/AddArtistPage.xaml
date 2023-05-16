@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="_153501_Bybko.UI.Pages.EditSongPage"
-             Title="EditSong">
+             x:Class="_153501_Bybko.UI.Pages.AddArtistPage"
+             Title="AddArtist">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -14,24 +14,21 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <VerticalStackLayout Margin="60,0,60,70" Spacing="20" VerticalOptions="Center">
-        <Entry Placeholder="{Binding Song.Name}" 
+        <Entry Placeholder="Name"
                Text="{Binding Name}"
                Style="{StaticResource simpleEntry}"/>
-        <Entry Placeholder="{Binding Song.Album}" 
-               Text="{Binding Album}"
+        <Entry Placeholder="Genre"
+               Text="{Binding Genre}"
                Style="{StaticResource simpleEntry}"/>
-        <Entry Placeholder="{Binding Song.Image}" 
-               Text="{Binding Image}"
+        <Entry Placeholder="Country"
+               Text="{Binding Country}"
                Style="{StaticResource simpleEntry}"/>
-        <Entry Placeholder="{Binding Song.Top}" 
-               Text="{Binding Top}"
-               Style="{StaticResource simpleEntry}"/>
-        <Button Text="Edit"
+        <Button Text="Add"
                 CornerRadius="0"
                 TextColor="Fuchsia"
-                Command="{Binding EditMemberCommand}"/>
+                Command="{Binding AddGroupCommand}"/>
     </VerticalStackLayout>
     
 </ContentPage>
