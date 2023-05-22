@@ -22,9 +22,16 @@
         <Entry Placeholder="Album"
                Text="{Binding Album}"
                Style="{StaticResource simpleEntry}"/>
-        <Entry Placeholder="Image"
-               Text="{Binding Image}"
-               Style="{StaticResource simpleEntry}"/>
+        <HorizontalStackLayout>
+            <Entry Placeholder="{Binding Path=Id, Converter={StaticResource imageConverter}}" 
+                   Text="{Binding Image}"
+                   Style="{StaticResource simpleEntry}"
+                   WidthRequest="210"/>
+            <Button Text="Choose"
+                    CornerRadius="0"
+                    TextColor="Fuchsia"
+                    Command="{Binding FileChooseCommand}"/>
+        </HorizontalStackLayout>
         <Entry Placeholder="Top"
                Text="{Binding Top}"
                Style="{StaticResource simpleEntry}"/>

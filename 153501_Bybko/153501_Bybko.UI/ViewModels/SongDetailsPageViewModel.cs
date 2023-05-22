@@ -44,20 +44,20 @@ namespace _153501_Bybko.UI.ViewModels
 
             string action = await Shell.Current.CurrentPage.DisplayActionSheet("Move to...", "Cancel", null, names);
 
-            if (action == null || action == song.Artist.Name) return;
+            if (action == null || action == Song.Artist.Name) return;
 
             foreach (Artist artist in artists)
             {
                 if (artist.Name == action)
                 {
-                    song.Artist = artist;
-                    song.ArtistId = artist.Id;
+                    Song.Artist = artist;
+                    Song.ArtistId = artist.Id;
 
                     break;
                 }
             }
 
-            await _songService.UpdateAsync(song);
+            await _songService.UpdateAsync(Song);
         }
     }
 }

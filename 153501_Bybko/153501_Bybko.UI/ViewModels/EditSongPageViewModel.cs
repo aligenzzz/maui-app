@@ -40,8 +40,6 @@ namespace _153501_Bybko.UI.ViewModels
                 Song.Name = Name;
             if (Album != null && Album != string.Empty)
                 Song.Album = Album;
-            if (Image != null && Image != string.Empty)
-                Song.Image = Image;
             if (Top != null && Top != string.Empty)
                 Song.Top = int.Parse(Top);
 
@@ -64,6 +62,29 @@ namespace _153501_Bybko.UI.ViewModels
             {
                 var pageToRemove = navigationStack[i];
                 Shell.Current.Navigation.RemovePage(pageToRemove);
+            }
+        }
+
+        [RelayCommand]
+        void FileChoose() => ImageChoose();
+
+        private async void ImageChoose()
+        {
+
+            FileResult result = await FilePicker.PickAsync(new PickOptions
+            {
+                FileTypes = FilePickerFileType.Images
+            });
+
+            if (result != null)
+            {
+                string sourcePath = result.FullPath;
+                string fileName = $"i{Song.Id}i.png";
+                string destinationDirectory = "/storage/emulated/0/Android/data/com.companyname.x_153501_bybko.ui/cache/Images/";
+                string destinationPath = Path.Combine(destinationDirectory, fileName);
+
+
+                File.Move(sourcePath, destinationPath, true);
             }
         }
     }

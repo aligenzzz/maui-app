@@ -2,6 +2,9 @@
 using _153501_Bybko.Domain.Entities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using System.Diagnostics;
 
 namespace _153501_Bybko.UI.ViewModels
 {
@@ -36,7 +39,6 @@ namespace _153501_Bybko.UI.ViewModels
         {
             if (Name == null || Name == string.Empty ||
                 Album == null || Album == string.Empty ||
-                Image == null || Image == string.Empty ||
                 Top == null || Top == string.Empty)
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Error...", "Invalid data!!!", "OK");
@@ -50,7 +52,6 @@ namespace _153501_Bybko.UI.ViewModels
                 {
                     Name = this.Name,
                     Album = this.Album,
-                    Image = this.Image,
                     Top = int.Parse(this.Top),
                     Artist = this.Artist,
                     ArtistId = this.Artist.Id
@@ -66,6 +67,32 @@ namespace _153501_Bybko.UI.ViewModels
             await _songService.AddAsync(song);
 
             await Shell.Current.Navigation.PopAsync();
+        }
+
+        [RelayCommand]
+        void FileChoose() => ImageChoose();
+
+        private async void ImageChoose()
+        {
+
+            FileResult result = await FilePicker.PickAsync(new PickOptions
+            {
+                FileTypes = FilePickerFileType.Images
+            });
+
+            if (result != null)
+            {
+                var songs = await _songService.GetAllAsync();
+                int value = songs.Count + 1;
+
+                string sourcePath = result.FullPath; 
+                string fileName = $"i{value}i.png";
+                string destinationDirectory = "/storage/emulated/0/Android/data/com.companyname.x_153501_bybko.ui/cache/Images/";
+                string destinationPath = Path.Combine(destinationDirectory, fileName);
+
+
+                File.Move(sourcePath, destinationPath, true);
+            }
         }
     }
 }

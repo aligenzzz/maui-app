@@ -7,7 +7,8 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:TopToColorValueConverter x:Key="topConverter" />
+            <converters:TopToColorValueConverter x:Key="topConverter"/>
+            <converters:IdToImageValueConverter x:Key="imageConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -20,7 +21,7 @@
     </ContentPage.ToolbarItems>
 
     <VerticalStackLayout Spacing="20">
-        <Image Source="{Binding Song.Image}"
+        <Image Source="{Binding Path=Song.Id, Converter={StaticResource imageConverter}}"
                Margin="10"
                HeightRequest="300"/>
 

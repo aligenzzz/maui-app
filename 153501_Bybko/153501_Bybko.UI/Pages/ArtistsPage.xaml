@@ -18,7 +18,8 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:TopToColorValueConverter x:Key="topConverter" />
+            <converters:TopToColorValueConverter x:Key="topConverter"/>
+            <converters:IdToImageValueConverter x:Key="imageConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -87,7 +88,7 @@
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalTextAlignment="Start"
                                    WidthRequest="255"/>
-                            <Image Source="{Binding Image}" 
+                            <Image Source="{Binding Path=Id, Converter={StaticResource imageConverter}}" 
                                    MaximumHeightRequest="80"
                                    HorizontalOptions="End"/>
                         </HorizontalStackLayout>

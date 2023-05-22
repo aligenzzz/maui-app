@@ -28,7 +28,7 @@ namespace _153501_Bybko.Application.Services
 
         public Task<IReadOnlyList<Song>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _songRepository.ListAllAsync();
         }
 
         public Task<IReadOnlyList<Song>> GetArtistSongs(int id)
